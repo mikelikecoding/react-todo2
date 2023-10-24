@@ -1,4 +1,5 @@
 import * as React from 'react';
+import TodoListItem from './TodoListItem';
 
 /////////////////////////////
 // The todo arry
@@ -37,10 +38,9 @@ function TodoList () {
         <ul>
         {/*This map function will iterate through the array of object*/}
       
-      {todoList.map((item) =>
-        <li key={item.objectID} >Chapter  {item.objectID}:  {item.title}
-        </li> )}
+      {todoList.map((todo) =><TodoListItem key={todo.objectID}  title={todo.title}  /> )} 
       
+    
       </ul>
     )
 }

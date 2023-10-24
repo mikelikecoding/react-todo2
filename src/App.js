@@ -1,48 +1,23 @@
 import * as React from 'react';
-
-{/*This is an array of object to create a list*/}
-
-const todoList = [
-  {
-    title: 'HelloReact',
-    objectID: 1,
-}, {
-    title: 'Requirements',
-    objectID: 2,
-},{
-  title: 'SettingupaReactProject',
-  objectID: 3,
-},{
-  title: 'MeettheReactComponent.',
-  objectID: 4,
-},{
-  title: 'React JSX',
-  objectID: 5,
-},{
-  title: 'Lists in React',
-  objectID: 6,
-},
+import TodoList from './TodoList';
+import AddTodoForm from './AddTodoForm';
 
 
-];
-
-{/*This is the app that will display the arrays of Object*/}
+{/*This is the app that will display the arrays of Object and the form with button*/}
 
 function App() {
+  
   return (
-<div>
+    <div>
       <h1>Todo List</h1>
 
+
+  <AddTodoForm />
 <hr />
-    <ul>
-        {/*This map function will iterate through the array of object*/}
-
-      {todoList.map((item) =>
-        <li key={item.objectID} >Chapter  {item.objectID}:  {item.title}
-        </li> )}
-
-    </ul>
+ <TodoList />  
 </div> );
+
 }
+
 
 export default App;

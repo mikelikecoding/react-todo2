@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import TodoListItem from './TodoListItem';
 
 /////////////////////////////
@@ -8,22 +8,22 @@ import TodoListItem from './TodoListItem';
 const todoList = [
      {
        title: 'HelloReact',
-       objectID: 1,
+      id: 1,
    }, {
        title: 'Requirements',
-       objectID: 2,
+       id: 2,
    },{
      title: 'SettingupaReactProject',
-     objectID: 3,
+     id: 3,
    },{
      title: 'MeettheReactComponent.',
-     objectID: 4,
+     id: 4,
    },{
      title: 'React JSX',
-     objectID: 5,
+     id: 5,
    },{
      title: 'Lists in React',
-     objectID: 6,
+     id: 6,
    },
    
    
@@ -38,7 +38,7 @@ function TodoList () {
         <ul>
         {/*This map function will iterate through the array of object*/}
       
-      {todoList.map((todo) =><TodoListItem key={todo.objectID}  title={todo.title}  /> )} 
+      {todoList.map((todo) =><TodoListItem key={todo.id}  title={todo.title}  /> )} 
       
     
       </ul>

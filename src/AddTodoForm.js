@@ -2,15 +2,23 @@ import React from 'react';
 // import * as reactDom from 'react-dom'
 import { useState } from "react";
 
-function AddTodoForm (props) {
- const handleAddTodo = (event) => {
-        event.preventDefault();
-     const todoTitle = event.target.title.value;
-     console.log(todoTitle, `ARE YOU HERE111`);
-     const form = document.querySelector('form');
-      form.reset();
-      props.onAddTodo(todoTitle);
 
+function AddTodoForm ({onAddTodo}) {
+
+const [todoTitle, setTodoTitle] = useState('');
+
+const handleTitleChange = (event) => {
+     const newTodoTitle = event.target.value
+     setTodoTitle(newTodoTitle)
+}
+
+ const handleAddTodo = (event) => {
+ event.preventDefault();
+ //if todoTile === '' I don't want it to return anything
+ if(todoTitle.trim().length === 0) return 
+      //   let onAddTodo;
+  onAddTodo({title: todoTitle, id: Date.now()}) // won't work without the props
+        setTodoTitle('')
     }
 
    return (
@@ -18,7 +26,7 @@ function AddTodoForm (props) {
     <form onSubmit={handleAddTodo} >
   
       <label htmlFor="todoTitle">Title: </label>
-      <input id='todoTitle' type="text" name='title' />
+      <input id='todoTitle' value={todoTitle} type="text" name='title' onChange={handleTitleChange} />
       <button type='submit'>Submit</button>
     
       {/* <span>{todoTitle}</span> */}

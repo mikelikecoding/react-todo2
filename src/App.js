@@ -7,18 +7,22 @@ import {useState} from 'react';
 // /*This is the app that will display the arrays of Object and the form with button*
 
 function App() {
-  const [newTodo, setNewTodo] = useState('');
+  const [todoList, setTodoList] = useState([]);
+  // const [todoList, setTodoList] = [];
+const addTodo = (newTodo) => {
+  setTodoList([...todoList, newTodo])
+}
+
   return (
     <div>
       <h1>Todo List</h1>
 
    {/* <Search /> */}
-  <AddTodoForm  onAddTodo={setNewTodo}/>
+  <AddTodoForm  onAddTodo={addTodo}/>
+
 <hr />
- <p>
-  {newTodo}
- </p>
- <TodoList />  
+ 
+ <TodoList todoList={todoList} />  
 </div> );
 
 }

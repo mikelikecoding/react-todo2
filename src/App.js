@@ -10,6 +10,7 @@ function App() {
   const [newTodo, setNewTodo] = useState('');
   return (
     <div>
+    <div>
       <h1>Todo List</h1>
 
    {/* <Search /> */}
@@ -20,6 +21,7 @@ function App() {
  </p>
  <TodoList />  
 </div> );
+
 
 }
 

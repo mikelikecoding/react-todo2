@@ -1,23 +1,29 @@
-import * as React from 'react';
+import React from 'react';
 import TodoList from './TodoList';
-import AddTodoForm from './AddTodoForm';
+import AddTodoForm from './AddTodoForm'
+// import Search from './Search';
+import {useState} from 'react';
 
-
-
-{/*This is the app that will display the arrays of Object and the form with button*/}
+// /*This is the app that will display the arrays of Object and the form with button*
 
 function App() {
-  
+  const [newTodo, setNewTodo] = useState('');
   return (
+    <div>
     <div>
       <h1>Todo List</h1>
 
-  <AddTodoForm />
-
+   {/* <Search /> */}
+  <AddTodoForm  onAddTodo={setNewTodo}/>
 <hr />
+ <p>
+  {newTodo}
+ </p>
  <TodoList />  
 </div> );
 
+
 }
+
 
 export default App;

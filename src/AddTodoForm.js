@@ -1,43 +1,30 @@
-import React from 'react';
-// import * as reactDom from 'react-dom'
-import { useState } from "react";
+import React, { useState } from "react";
+import InputWithLabel from "./InputWithLabel";
 
+const AddTodoForm = ({ onAddTodo }) => {
+  const [todoTitle, setTodoTitle] = useState("");
 
-function AddTodoForm ({onAddTodo}) {
+  const handleTitleChange = (e) => {
+    setTodoTitle(e.target.value);
+  };
 
-const [todoTitle, setTodoTitle] = useState('');
+  const handleAddTodo = (event) => {
+    event.preventDefault();
+    if (todoTitle.trim().length === 0) return;
 
-const handleTitleChange = (event) => {
-     const newTodoTitle = event.target.value
-     setTodoTitle(newTodoTitle)
-}
+    onAddTodo({ title: todoTitle, id: Date.now() }); // won't work without the props
+    setTodoTitle("");
+  };
 
- const handleAddTodo = (event) => {
- event.preventDefault();
- //if todoTile === '' I don't want it to return anything
- if(todoTitle.trim().length === 0) return 
-      //   let onAddTodo;
-  onAddTodo({title: todoTitle, id: Date.now()}) // won't work without the props
-        setTodoTitle('')
-    }
-
-   return (
-    <div>
-    <form onSubmit={handleAddTodo} >
-  
-      <label htmlFor="todoTitle">Title: </label>
-      <input id='todoTitle' value={todoTitle} type="text" name='title' onChange={handleTitleChange} />
-      <button type='submit'>Submit</button>
-    
-      {/* <span>{todoTitle}</span> */}
-      
+  return (
+    <form onSubmit={handleAddTodo}>
+      <InputWithLabel
+        value={todoTitle}
+        onChange={handleTitleChange}
+      ></InputWithLabel>
+      <button type="submit">Submit</button>
     </form>
-
-    </div> 
-
-   )
-}
-
-
+  );
+};
 
 export default AddTodoForm;

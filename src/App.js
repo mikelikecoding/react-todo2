@@ -11,24 +11,18 @@ const useSemiPersistentState = () => {
   );
 
   useEffect(() => {
-    // Save todoList to localStorage whenever it changes
     localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-  }, [todoList]); // `todoList` specified as a dependency
-
-  return [todoList, setTodoList];
+  }, [todoList]); 
+    return [todoList, setTodoList];
 };
-
-
 
 function App() {
   const [todoList, setTodoList] = useSemiPersistentState();
-  console.log(todoList, todoList.title)
 
   const removeTodo = (idToRemove) => {
-    const updatedTodoList = todoList.filter(item => item.id !== idToRemove);
+    const updatedTodoList = todoList.filter((item) => item.id !== idToRemove);
     setTodoList(updatedTodoList);
   };
-
 
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
@@ -37,12 +31,9 @@ function App() {
   return (
     <>
       <h1>Todo List</h1>
-
-      <AddTodoForm onAddTodo={addTodo} />
-
+        <AddTodoForm onAddTodo={addTodo} />
       <hr />
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-      <TodoList todoList={todoList} />
+       <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
     </>
   );
 }

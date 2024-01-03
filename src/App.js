@@ -54,7 +54,6 @@ function App() {
       ) : (
         <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
       )}
-       <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
     </>
   );
 }

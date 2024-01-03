@@ -4,24 +4,68 @@ import AddTodoForm from "./AddTodoForm";
 import { useState, useEffect } from "react";
 
 
+const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
 
 function App() {
-  const [todoList, setTodoList] = useState(
-    JSON.parse(localStorage.getItem("savedTodoList")) || []
-  );
+  const [todoList, setTodoList] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
+
+  async function fetchData(setTodoList, setIsLoading) {
+    try {
+      const options = {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
+        },
+      };
+
+
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const todos = data.records.map((record) => ({
+        title: record.fields.title, 
+        id: record.id,
+      }));
+
+      setTodoList(todos);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    
+    }
+  }
+
+  function StateComponents() {
+    const [todoList, setTodoList] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+      fetchData(setTodoList, setIsLoading);
+    }, []);
+
+    
+  }
 
   useEffect(() => {
     new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve({ data: { todoList: todoList } });
+        resolve({
+          data: {
+            todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
+          },
+        });
       }, 2000);
     }).then((result) => {
       setTodoList(result.data.todoList);
       setIsLoading(false);
     });
-  });
+  }, []);
 
   useEffect(() => {
     if (!isLoading) {
@@ -43,8 +87,11 @@ function App() {
       <h1>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
       <hr />
-      {isLoading ? <p>Page Is Loading....</p> : TodoList}
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      {isLoading ? (
+        <p>Page Is Loading....</p>
+      ) : (
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      )}
     </>
   );
 }

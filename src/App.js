@@ -3,6 +3,7 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { useState, useEffect } from "react";
 
+// /*This is the app that will display the arrays of Object and the form with button*
 
 
 function App() {

@@ -3,6 +3,8 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { useState, useEffect } from "react";
 
+
+
 function App() {
   const [todoList, setTodoList] = useState([]);
 
@@ -66,7 +68,7 @@ function App() {
   return (
     <>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={addTodo} />
+        <AddTodoForm onAddTodo={addTodo} />
       <hr />
       {isLoading ? (
         <p>Page Is Loading....</p>

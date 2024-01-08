@@ -3,24 +3,22 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { useState, useEffect } from "react";
 
-
-const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
-
 function App() {
   const [todoList, setTodoList] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
-  async function fetchData(setTodoList, setIsLoading) {
+  const fetchData = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
+      },
+    };
+
+    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/`;
+
     try {
-      const options = {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
-        },
-      };
-
-
       const response = await fetch(url, options);
 
       if (!response.ok) {
@@ -28,43 +26,26 @@ function App() {
       }
 
       const data = await response.json();
-      const todos = data.records.map((record) => ({
-        title: record.fields.title, 
-        id: record.id,
+
+      console.log(data);
+
+      const todos = data.records.map((todo) => ({
+        id: todo.id,
+        title: todo.fields.title,
       }));
+      console.log(todos);
 
       setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error.message);
-    
+
+      setIsLoading(false);
     }
-  }
-
-  function StateComponents() {
-    const [todoList, setTodoList] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-      fetchData(setTodoList, setIsLoading);
-    }, []);
-
-    
-  }
+  };
 
   useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          data: {
-            todoList: JSON.parse(localStorage.getItem("savedTodoList")) || [],
-          },
-        });
-      }, 2000);
-    }).then((result) => {
-      setTodoList(result.data.todoList);
-      setIsLoading(false);
-    });
+    fetchData(setTodoList, setIsLoading);
   }, []);
 
   useEffect(() => {

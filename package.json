@@ -6,7 +6,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",
+<<<<<<< HEAD
+    "react-scripts": "5.0.1"
+=======
     "react-scripts": "^3.0.1"
+>>>>>>> 7a934e4089ffbd4cd1c2508b713c12495b06a054
   },
   "scripts": {
     "start": "react-scripts start",

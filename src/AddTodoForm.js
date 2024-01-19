@@ -25,7 +25,7 @@ const AddTodoForm = ({ onAddTodo }) => {
       <input className={styles.input}
         value={todoTitle}
         onChange={handleTitleChange}
-        ></input>
+        />
       <button type="submit" className={styles.inputBtn}>Submit</button>
     </form>
   );

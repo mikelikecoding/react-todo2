@@ -8,14 +8,12 @@ const TodoListItem = (props) => {
   };
 
   return (
-    < >
-      <li className={styles.ListItem}>
-        <span>{title}</span>
-        <button type="button" onClick={handleRemoveClick} className={styles.btn}>
-          Remove
-        </button>
-      </li>
-    </>
+    <li className={styles.ListItem}>
+      <span>{title}</span>
+      <button type="button" onClick={handleRemoveClick} className={styles.btn}>
+        Remove
+      </button>
+    </li>
   );
 };
 

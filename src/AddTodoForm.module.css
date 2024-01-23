@@ -1,173 +1,101 @@
-/* For Media Query */
+/* Media query for 1800 */
 
-/* Media Query for Mobile Devices */
-@media (max-width: 480px) {
-  .appStyles {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 3%;
-    background-color: #ccaaaa;
-    border-radius: 12%;
-    /* For backgrond image */
-    background-repeat: no-repeat;
-    background-image: url(../public/images/vill.jpeg);
-    background-size: cover;
+.formSize {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.input {
+  width: 19rem;
+  height: 2rem;
+  border-radius: 12%;
+}
+
+.inputBtn {
+  width: 5rem;
+  height: 2.5rem;
+  color: wheat;
+  background-color: blue;
+  border-radius: 20%;
+  margin-left: 6.5%;
+}
+
+/* Media Query for Mobile phone Devices */
+@media (max-width: 30rem) {
+  
+  .input {
+    width: 9rem;
+    height: 1rem;
   }
 
-  .todoList {
-    font-size: 24px;
-    color: brown;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .logo {
-    position: absolute;
-    left: 11%;
-    top: 1%;
-    font-size: 1rem;
-    color: brown;
-    text-shadow: 1px 1px 1px black;
-    font-family: Arial, Helvetica, sans-serif;
+  .inputBtn {
+    margin-left: 6.5%;
+    width: 4.25rem;
+    height: 1.563rem;
+    margin-top: -1%;
+    padding: 0.125rem;
   }
 }
 
 /* Media Query for low resolution  Tablets, Ipads */
-@media (min-width: 481px) and (max-width: 767px) {
-  .appStyles {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 3%;
-    background-color: #ccaaaa;
-    /* For backgrond image */
-    background-image: url(../public/images/vill.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
+@media (min-width: 30.063rem) and (max-width: 47.938rem) {
+  
+  .input {
+    width: 17rem;
+    height: 1.5rem;
+    margin-top: 16%;
   }
 
-  .todoList {
-    font-size: 4rem;
-    color: brown;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .logo {
-    position: absolute;
-    left: 11%;
-    top: 1%;
-    font-size: 1rem;
-    color: brown;
-    text-shadow: 1px 1px 1px black;
-    font-family: Arial, Helvetica, sans-serif;
+  .inputBtn {
+    font-size: 18px;
+    height: 2.5rem;
+    margin-left: 6.5%;
+    width: 5.625;
+    height: 30px;
+    margin-top: 16%;
+    padding: 0.125rem;
   }
 }
 
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .appStyles {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 3%;
-    background-color: #ccaaaa;
-    /* For backgrond image */
-    background-image: url(../public/images/vill.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
+@media (min-width: 748rem) and (max-width: 64rem) {
+  
+  .input {
+    width: 15rem;
+    height: 2rem;
   }
 
-  .todoList {
-    font-size: 5rem;
-    color: brown;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .logo {
-    position: absolute;
-    left: 6%;
-    top: 1%;
-    font-size: 1.5rem;
-    color: brown;
-    text-shadow: 1px 1px 1px black;
-    font-family: Arial, Helvetica, sans-serif;
+  .inputBtn {
+    width: 4.5rem;
+    height: 1.75rem;
   }
 }
 
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px) {
-  .appStyles {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 3%;
-    background-color: #ccaaaa;
-    /* For backgrond image */
-    background-image: url(../public/images/vill.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
+@media (min-width: 64.063rem) and (max-width: 80rem) {
+  
+  .input {
+    width: 16.5rem;
+    height: 2rem;
   }
 
-  .todoList {
-    font-size: 6.5rem;
-    color: brown;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .logo {
-    position: absolute;
-    left: 4%;
-    top: 1%;
-    font-size: 2rem;
-    color: brown;
-    text-shadow: 1px 1px 1px black;
-    font-family: Arial, Helvetica, sans-serif;
+  .inputBtn {
+    width: 4.5rem;
+    height: 2rem;
   }
 }
 
 /* Media Query for Large screens */
-@media (min-width: 1281px) {
-  .appStyles {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 3%;
-    background-color: #ccaaaa;
-    /* For backgrond image */
-    background-image: url(../public/images/vill.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
+@media (min-width: 80.063rem) {
+ 
+  .input {
+    width: 19rem;
+    height: 2rem;
   }
 
-  .todoList {
-    font-size: 7rem;
-    color: brown;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  .logo {
-    position: absolute;
-    left: 5%;
-    top: 1%;
-    font-size: 2.5rem;
-    color: brown;
-    text-shadow: 8px 8px 8px black;
-    border: lightgray;
-    font-family: Arial, Helvetica, sans-serif;
+  .inputBtn {
+    width: 5rem;
+    height: 2.5rem;
   }
 }

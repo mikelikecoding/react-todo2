@@ -20,113 +20,71 @@
   margin-left: 6.5%;
 }
 
-/* Media Query for Mobile Devices */
-@media (max-width: 480px) {
+/* Media Query for Mobile phone Devices */
+@media (max-width: 30rem) {
   .ListItem {
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    color: brown;
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   .btn {
-    font-size: 14px;
-    color: wheat;
-    background-color: red;
-    border-radius: 20%;
+    font-size: 0.875rem;
     margin-left: 6.5%;
-    width: 68px;
-    height: 24px;
-    padding: 2px;
+    width: 4.25rem;
+    height: 1.5rem;
+    padding:0.125rem;
   }
 }
 
 /* Media Query for low resolution  Tablets, Ipads */
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 30.063rem) and (max-width: 47.938rem) {
   .ListItem {
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    color: brown;
+    font-size: 16px;
   }
 
   .btn {
     width: 4rem;
     height: 1.5rem;
-    color: wheat;
-    background-color: red;
-    border-radius: 20%;
     margin-left: 6.5%;
     margin-top: -3%;
   }
 }
 
 /* Media Query for Tablets Ipads portrait mode */
-@media (min-width: 768px) and (max-width: 1024px) {
+@media  (min-width: 748rem) and (max-width: 64rem) {
   .ListItem {
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    color: #f00505;
-    font-size: 20px;
-    background-color: lightgray;
-    filter: opacity(80%);
-    border-radius: 10%;
+    font-size: 1.25rem;
   }
 
   .btn {
     width: 4rem;
     height: 2rem;
-    color: wheat;
-    background-color: red;
     border-radius: 20%;
     margin-left: 6.5%;
   }
 }
 
 /* Media Query for Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px) {
+@media (min-width: 64.063rem) and (max-width: 80rem) {
   .ListItem {
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    color: #f00505;
-    font-size: 26px;
-    background-color: lightgray;
-    filter: opacity(80%);
-    border-radius: 10%;
+    font-size: 26px;  
   }
 
   .btn {
     width: 5rem;
     height: 1.5rem;
-    color: wheat;
-    background-color: red;
-    border-radius: 20%;
     margin-left: 6%;
   }
 }
 
 /* Media Query for Large screens */
-@media (min-width: 1281px) {
+@media (min-width: 80.063rem) {
   .ListItem {
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    color: #f00505;
-    font-size: 28px;
-    background-color: lightgray;
-    filter: opacity(80%);
-    border-radius: 10%;
+  font-size: 28px;
   }
 
   .btn {
     width: 5rem;
     height: 2rem;
-    color: wheat;
-    background-color: red;
-    border-radius: 20%;
     margin-left: 6.5%;
   }
 }

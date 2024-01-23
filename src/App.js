@@ -3,7 +3,7 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import styles from "./AddTodoForm.module.css";
+import styles from "./App.module.css";
 
 function App() {
   const [todoList, setTodoList] = useState([]);

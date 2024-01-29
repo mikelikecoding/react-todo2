@@ -1,0 +1,90 @@
+/* Media query for 1800 */
+
+.ListItem {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  color: #f00505;
+  font-size: 30px;
+  background-color: lightgray;
+  filter: opacity(80%);
+  border-radius: 10%;
+}
+
+.btn {
+  width: 5rem;
+  height: 2rem;
+  color: wheat;
+  background-color: red;
+  border-radius: 20%;
+  margin-left: 6.5%;
+}
+
+/* Media Query for Mobile phone Devices */
+@media (max-width: 30rem) {
+  .ListItem {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 0.875rem;
+    margin-left: 6.5%;
+    width: 4.25rem;
+    height: 1.5rem;
+    padding:0.125rem;
+  }
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 30.063rem) and (max-width: 47.938rem) {
+  .ListItem {
+    font-size: 16px;
+  }
+
+  .btn {
+    width: 4rem;
+    height: 1.5rem;
+    margin-left: 6.5%;
+    margin-top: -3%;
+  }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media  (min-width: 748rem) and (max-width: 64rem) {
+  .ListItem {
+    font-size: 1.25rem;
+  }
+
+  .btn {
+    width: 4rem;
+    height: 2rem;
+    border-radius: 20%;
+    margin-left: 6.5%;
+  }
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 64.063rem) and (max-width: 80rem) {
+  .ListItem {
+    font-size: 26px;  
+  }
+
+  .btn {
+    width: 5rem;
+    height: 1.5rem;
+    margin-left: 6%;
+  }
+}
+
+/* Media Query for Large screens */
+@media (min-width: 80.063rem) {
+  .ListItem {
+  font-size: 28px;
+  }
+
+  .btn {
+    width: 5rem;
+    height: 2rem;
+    margin-left: 6.5%;
+  }
+}

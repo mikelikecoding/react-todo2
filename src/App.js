@@ -3,6 +3,7 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styles from "./App.module.css";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -28,13 +29,10 @@ function App() {
 
       const data = await response.json();
 
-      console.log(data);
-
       const todos = data.records.map((todo) => ({
         id: todo.id,
         title: todo.fields.title,
       }));
-      console.log(todos);
 
       setTodoList(todos);
       setIsLoading(false);
@@ -71,18 +69,21 @@ function App() {
           path="/"
           element={
             <>
-              <h1>Todo List</h1>
-              <AddTodoForm onAddTodo={addTodo} />
-              <hr />
-              {isLoading ? (
-                <p>Page Is Loading....</p>
-              ) : (
-                <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
-              )}
+              <div className={styles.appStyles}>
+                <h1 className={styles.todoList}>Todo List</h1>
+                <AddTodoForm onAddTodo={addTodo} />
+                <hr />
+                {isLoading ? (
+                  <p>Page Is Loading....</p>
+                ) : (
+                  <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+                )}
+                <p className={styles.logo}>(T/D)</p>
+              </div>
             </>
           }
-        ></Route>
-        <Route path="/new" Component={<h1>New Todo List</h1>}></Route>
+        />
+        <Route path="/new" Component={<h1>New Todo List</h1>} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./AddTodoForm.module.css"
+import PropTypes from  "prop-types"
 
 
 
@@ -18,6 +19,7 @@ const AddTodoForm = ({ onAddTodo }) => {
     setTodoTitle("");
   };
 
+
   return (
     <form onSubmit={handleAddTodo} className={styles.formSize}>
       <input className={styles.input}
@@ -27,6 +29,11 @@ const AddTodoForm = ({ onAddTodo }) => {
       <button type="submit" className={styles.inputBtn}>Submit</button>
     </form>
   );
+};
+
+
+AddTodoForm.propTypes = {
+  onAddTodo: PropTypes.func
 };
 
 export default AddTodoForm;

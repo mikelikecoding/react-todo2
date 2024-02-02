@@ -19,7 +19,9 @@ const TodoListItem = (props) => {
 };
 
 TodoListItem.propTypes = {
-  handleRemoveClick: PropTypes.func,
+  title: PropTypes.string.isRequired, 
+  id: PropTypes.number.isRequired,    
+  onRemoveTodo: PropTypes.func.isRequired, 
 };
 
 export default TodoListItem;

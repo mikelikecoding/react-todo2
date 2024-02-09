@@ -8,7 +8,7 @@ function TodoList({ todoList, onRemoveTodo }) {
       {todoList.map((item) => (
         <TodoListItem
           key={item.id}
-          id={item.id}
+          id={parseInt(item.id)}
           title={item.title}
           onRemoveTodo={onRemoveTodo}
         />

@@ -28,10 +28,10 @@ function TodoContainer() {
 
       const todos = data.records.map((todo) => ({
         id: todo.id,
-        title: todo.fields.title,
+        title: capitalizeFirstLetter(todo.fields.title).toUpperCase(),
       }));
 
-      const mySort = (objectA, objectB) => {
+      const sortedTodo = todos.sort((objectA, objectB) => {
         if (objectA.title < objectB.title) {
           return -1;
         } else if (objectA.title > objectB.title) {
@@ -39,40 +39,85 @@ function TodoContainer() {
         } else {
           return 0;
         }
-      };
+      });
 
-      setTodoList(todos.sort(mySort));
+      setTodoList(sortedTodo);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error.message);
-
       setIsLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchData(setTodoList, setIsLoading);
+    fetchData();
   }, []);
 
-  useEffect(() => {
-    if (!isLoading) {
-      localStorage.setItem("todoList", JSON.stringify(todoList));
-    }
-  }, [todoList, isLoading]);
+  const removeTodo = async (idToRemove) => {
+    const deleteUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/${idToRemove}`;
 
-  const removeTodo = (idToRemove) => {
-    const updatedTodoList = todoList.filter((item) => item.id !== idToRemove);
-    setTodoList(updatedTodoList);
+    const options = {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
+      },
+    };
+
+    try {
+      const response = await fetch(deleteUrl, options);
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      setTodoList(todoList.filter((item) => item.title !== idToRemove));
+    } catch (error) {
+      console.error("Error deleting data:", error.message);
+    }
   };
 
-  const addTodo = (newTodo) => {
-    setTodoList([...todoList, newTodo]);
+  const addTodo = async (newTodo) => {
+    try {
+      const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/`;
+
+      const options = {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fields: {
+            title: capitalizeFirstLetter(newTodo.title).toUpperCase(), 
+          },
+        }),
+      };
+
+      const response = await fetch(url, options);
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const responseData = await response.json();
+      console.log("Data posted successfully:", responseData);
+
+      setTodoList([
+        ...todoList,
+        { id: responseData.id, title: responseData.fields.title },
+      ]);
+    } catch (error) {
+      console.error("Error posting data:", error.message);
+    }
+  };
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
   return (
     <div className={styles.appStyles}>
       <h1 className={styles.todoList}>Todo List</h1>
-
       <AddTodoForm onAddTodo={addTodo} />
       <hr />
       {isLoading ? (

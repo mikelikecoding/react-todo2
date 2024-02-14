@@ -7,10 +7,10 @@ function TodoList({ todoList, onRemoveTodo }) {
     <ul>
       {todoList.map((item) => (
         <TodoListItem
-          key={item.id}
-          id={parseInt(item.id)}
-          title={item.title}
-          onRemoveTodo={onRemoveTodo}
+        key={item.id}
+        id={item.id}
+        title={item.title}
+        onRemoveTodo={onRemoveTodo}
         />
       ))}
     </ul>
@@ -18,7 +18,8 @@ function TodoList({ todoList, onRemoveTodo }) {
 }
 
 TodoList.propTypes = {
-  todoList: PropTypes.array,
+  todoList: PropTypes.array, 
+  id: PropTypes.string.isRequired,
   onRemoveTodo: PropTypes.func.isRequired,
 }
 

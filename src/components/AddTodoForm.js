@@ -15,7 +15,7 @@ const AddTodoForm = ({ onAddTodo }) => {
     event.preventDefault();
     if (todoTitle.trim().length === 0) return;
 
-    onAddTodo({ title: todoTitle, id: Date.now() }); // won't work without the props
+    onAddTodo({ title: todoTitle, id: Date.now() }); 
     setTodoTitle("");
   };
 

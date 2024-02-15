@@ -70,7 +70,7 @@ function TodoContainer() {
         throw new Error(`Error: ${response.status}`);
       }
 
-      setTodoList(todoList.filter((item) => item.title !== idToRemove));
+      setTodoList(todoList.filter((item) => item.id !== idToRemove));
     } catch (error) {
       console.error("Error deleting data:", error.message);
     }
@@ -88,7 +88,7 @@ function TodoContainer() {
         },
         body: JSON.stringify({
           fields: {
-            title: capitalizeFirstLetter(newTodo.title).toUpperCase(), 
+            title: capitalizeFirstLetter(newTodo.title),
           },
         }),
       };
@@ -100,7 +100,6 @@ function TodoContainer() {
       }
 
       const responseData = await response.json();
-      console.log("Data posted successfully:", responseData);
 
       setTodoList([
         ...todoList,

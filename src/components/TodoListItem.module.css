@@ -31,7 +31,7 @@
     margin-left: 6.5%;
     width: 4.25rem;
     height: 1.5rem;
-    padding:0.125rem;
+    padding: 0.125rem;
   }
 }
 
@@ -50,7 +50,7 @@
 }
 
 /* Media Query for Tablets Ipads portrait mode */
-@media  (min-width: 748rem) and (max-width: 64rem) {
+@media (min-width: 748rem) and (max-width: 64rem) {
   .ListItem {
     font-size: 1.25rem;
   }
@@ -66,7 +66,7 @@
 /* Media Query for Laptops and Desktops */
 @media (min-width: 64.063rem) and (max-width: 80rem) {
   .ListItem {
-    font-size: 26px;  
+    font-size: 26px;
   }
 
   .btn {
@@ -79,7 +79,7 @@
 /* Media Query for Large screens */
 @media (min-width: 80.063rem) {
   .ListItem {
-  font-size: 28px;
+    font-size: 28px;
   }
 
   .btn {

@@ -23,7 +23,6 @@
 
 /* Media Query for Mobile phone Devices */
 @media (max-width: 30rem) {
-  
   .input {
     width: 9rem;
     height: 1rem;
@@ -40,7 +39,6 @@
 
 /* Media Query for low resolution  Tablets, Ipads */
 @media (min-width: 30.063rem) and (max-width: 47.938rem) {
-  
   .input {
     width: 17rem;
     height: 1.5rem;
@@ -60,7 +58,6 @@
 
 /* Media Query for Tablets Ipads portrait mode */
 @media (min-width: 748rem) and (max-width: 64rem) {
-  
   .input {
     width: 15rem;
     height: 2rem;
@@ -74,7 +71,6 @@
 
 /* Media Query for Laptops and Desktops */
 @media (min-width: 64.063rem) and (max-width: 80rem) {
-  
   .input {
     width: 16.5rem;
     height: 2rem;
@@ -88,7 +84,6 @@
 
 /* Media Query for Large screens */
 @media (min-width: 80.063rem) {
- 
   .input {
     width: 19rem;
     height: 2rem;

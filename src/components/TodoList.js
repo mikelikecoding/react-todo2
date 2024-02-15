@@ -17,9 +17,11 @@ function TodoList({ todoList, onRemoveTodo }) {
   );
 }
 
+
+
 TodoList.propTypes = {
   todoList: PropTypes.array, 
-  id: PropTypes.string.isRequired,
+  
   onRemoveTodo: PropTypes.func.isRequired,
 }
 

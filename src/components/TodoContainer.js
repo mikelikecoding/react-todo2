@@ -2,12 +2,15 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { useState, useEffect } from "react";
 import styles from "../App.module.css";
+import React, { useCallback } from "react";
 
 function TodoContainer() {
+  
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = async () => {
+ 
+  const fetchData = useCallback(async () => {
     const options = {
       method: "GET",
       headers: {
@@ -28,30 +31,31 @@ function TodoContainer() {
 
       const todos = data.records.map((todo) => ({
         id: todo.id,
-        title: capitalizeFirstLetter(todo.fields.title).toUpperCase(),
+        title: todo.fields.title,
       }));
 
-      const sortedTodo = todos.sort((objectA, objectB) => {
-        if (objectA.title < objectB.title) {
-          return -1;
-        } else if (objectA.title > objectB.title) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
+      // const sortedTodo = todos.sort((objectA, objectB) => {
+      //   if (objectA.title < objectB.title) {
+      //     return -1;
+      //   } else if (objectA.title > objectB.title) {
+      //     return 1;
+      //   } else {
+      //     return 0;
+      //   }
+      // });
 
-      setTodoList(sortedTodo);
+      setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error.message);
+
       setIsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData(setTodoList, setIsLoading);
+  }, [fetchData]);
 
   const removeTodo = async (idToRemove) => {
     const deleteUrl = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/${idToRemove}`;

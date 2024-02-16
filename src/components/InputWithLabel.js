@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import PropTypes from  "prop-types"
+import React, { useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 
 const InputWithLabel = ({ children, value, onChange }) => {
   const inputRef = useRef(null);
@@ -10,7 +10,7 @@ const InputWithLabel = ({ children, value, onChange }) => {
 
   return (
     <>
-     <label htmlFor="todoInput">{children}</label>
+      <label htmlFor="todoInput">{children}</label>
       <input
         id="inputField"
         ref={inputRef}

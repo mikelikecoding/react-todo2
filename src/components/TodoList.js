@@ -29,7 +29,6 @@ function TodoList({ todoList, onRemoveTodo }) {
 
 TodoList.propTypes = {
   todoList: PropTypes.array,
-
   onRemoveTodo: PropTypes.func.isRequired,
 };
 

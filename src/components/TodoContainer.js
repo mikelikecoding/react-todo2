@@ -2,15 +2,12 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import { useState, useEffect } from "react";
 import styles from "../App.module.css";
-import React, { useCallback } from "react";
 
 function TodoContainer() {
-  
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
- 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     const options = {
       method: "GET",
       headers: {
@@ -31,30 +28,19 @@ function TodoContainer() {
 
       const todos = data.records.map((todo) => ({
         id: todo.id,
-        title: todo.fields.title,
+        title: capitalizeFirstLetter(todo.fields.title).toUpperCase(),
       }));
-
-      // const sortedTodo = todos.sort((objectA, objectB) => {
-      //   if (objectA.title < objectB.title) {
-      //     return -1;
-      //   } else if (objectA.title > objectB.title) {
-      //     return 1;
-      //   } else {
-      //     return 0;
-      //   }
-      // });
 
       setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error.message);
-
       setIsLoading(false);
     }
-  }, []);
+  };
 
   useEffect(() => {
-    fetchData(setTodoList, setIsLoading);
+    fetchData();
   }, [fetchData]);
 
   const removeTodo = async (idToRemove) => {
@@ -92,7 +78,7 @@ function TodoContainer() {
         },
         body: JSON.stringify({
           fields: {
-            title: capitalizeFirstLetter(newTodo.title),
+            title: capitalizeFirstLetter(newTodo.title).toUpperCase(),
           },
         }),
       };
@@ -104,6 +90,7 @@ function TodoContainer() {
       }
 
       const responseData = await response.json();
+      console.log("Data posted successfully:", responseData);
 
       setTodoList([
         ...todoList,
@@ -126,7 +113,7 @@ function TodoContainer() {
       {isLoading ? (
         <p>Page Is Loading....</p>
       ) : (
-        <TodoList todoList={todoList}  onRemoveTodo={removeTodo} />
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
       )}
       <p className={styles.logo}>(T/D)</p>
     </div>

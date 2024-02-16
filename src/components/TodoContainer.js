@@ -126,7 +126,7 @@ function TodoContainer() {
       {isLoading ? (
         <p>Page Is Loading....</p>
       ) : (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+        <TodoList todoList={todoList}  setTodoList={setTodoList} onRemoveTodo={removeTodo} />
       )}
       <p className={styles.logo}>(T/D)</p>
     </div>

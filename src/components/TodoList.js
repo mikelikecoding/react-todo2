@@ -2,7 +2,7 @@ import React from "react";
 import TodoListItem from "./TodoListItem";
 import PropTypes from "prop-types";
 
-function TodoList({ todoList, onRemoveTodo }) {
+function TodoList({ todoList, setTodoList, onRemoveTodo }) {
   const sortedTodo = todoList.sort((objectA, objectB) => {
     if (objectA.title < objectB.title) {
       return -1;
@@ -13,9 +13,11 @@ function TodoList({ todoList, onRemoveTodo }) {
     }
   });
 
+  setTodoList(sortedTodo);
+
   return (
     <ul>
-      {sortedTodo.map((item) => (
+      {todoList.map((item) => (
         <TodoListItem
           key={item.id}
           id={item.id}
@@ -29,7 +31,7 @@ function TodoList({ todoList, onRemoveTodo }) {
 
 TodoList.propTypes = {
   todoList: PropTypes.array,
-
+  setTodoList: PropTypes.func.isRequired,
   onRemoveTodo: PropTypes.func.isRequired,
 };
 
